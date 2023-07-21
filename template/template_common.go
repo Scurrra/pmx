@@ -1,8 +1,9 @@
 package template
 
 import (
+	"github.com/Scurrra/pmx/template/dirs"
+
 	"github.com/Scurrra/docsync/dsconfig"
-	"github.com/Scurrra/pmx/dirs"
 	"github.com/Scurrra/pmx/pmxconfig"
 	. "github.com/eminarican/safetypes"
 )

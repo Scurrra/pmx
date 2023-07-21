@@ -1,15 +1,5 @@
 package pmxconfig
 
-// Supported programming languages
-type PLanguage string
-
-const (
-	C   PLanguage = "c"
-	CPP           = "cpp"
-	CXX           = "cxx" // C/C++
-	// later Circle and CPP2
-)
-
 // Build options
 type BuildOptions struct {
 	// Build command, if external tool is used. Runs on `pmx build`.
@@ -34,7 +24,7 @@ type Dependency struct {
 	Version string
 
 	// Features of the dependency that should be enabled
-	Features []string
+	Features []string // only for header-only deps I guess
 
 	// Is this dependency optional, i. e. is it enabled for default set of the project dependencies
 	Optional bool
@@ -48,6 +38,6 @@ type Feature []string
 type Config struct {
 	Project      ProjectMeta
 	Build        BuildOptions
-	Dependencies map[string][]Dependency
+	Dependencies map[string]Dependency
 	Feature      map[string][]Feature
 }
