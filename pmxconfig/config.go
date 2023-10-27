@@ -1,5 +1,12 @@
 package pmxconfig
 
+type ProjectType string
+
+const (
+	LIB ProjectType = "library"
+	BIN             = "binary"
+)
+
 // Build options
 type BuildOptions struct {
 	// Build command, if external tool is used. Runs on `pmx build`.
@@ -12,10 +19,11 @@ type BuildOptions struct {
 type ProjectMeta struct {
 	Name        string   // `toml:"name"`
 	Authors     []string // `toml:"authors"`
-	Version     string   // `toml:"version"`
-	License     string   // `toml:"license"`
-	Description string   // `toml:"description"`
-	Repository  string   // `toml:"repository"`
+	ProjectType ProjectType
+	Version     string // `toml:"version"`
+	License     string // `toml:"license"`
+	Description string // `toml:"description"`
+	Repository  string // `toml:"repository"`
 }
 
 // Dependencies of the project.
@@ -40,4 +48,8 @@ type Config struct {
 	Build        BuildOptions
 	Dependencies map[string]Dependency
 	Feature      map[string][]Feature
+}
+
+func Configure(name string, authors []string, pt ProjectType, version, license, description, repository string) error {
+	return nil
 }
